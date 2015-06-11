@@ -1,5 +1,14 @@
 <h1>Contacts</h1>
 
 {{#each model as |item|}}
-  <li>{{item.name}}, {{item.phone}}</li>
+  <li>
+    {{item.name}}
+
+    {{#if isShowingPhoneNumber}}
+      ,{{item.phone}}
+    {{/if}}
+
+  </li>
 {{/each}}
+
+<button class="btn btn-danger" {{action "toggleShowPhoneNumber"}}>Show Phone Number</button>
