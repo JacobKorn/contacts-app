@@ -6,9 +6,21 @@
 
     {{#if isShowingPhoneNumber}}
       ,{{item.phone}}
+    {{else}}
+      ****
     {{/if}}
-
   </li>
+{{else}}
+  No Content!
 {{/each}}
 
-<button class="btn btn-danger" {{action "toggleShowPhoneNumber"}}>Show Phone Number</button>
+<button {{action "toggleShowPhoneNumber"}} class="btn {{if isShowingPhoneNumber 'btn-danger' 'btn-success'}}">
+  {{if isShowingPhoneNumber 'Hide' 'Show'}} Phone Number
+</button>
+
+{{name}}, {{phone}}
+
+{{input type="text" value=name placeholder="Name"}}
+{{input type="text" value=phone placeholder="Phonenumber"}}
+
+<button {{action "submit"}}>Add</button>
