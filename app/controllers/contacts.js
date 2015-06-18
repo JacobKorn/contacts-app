@@ -2,6 +2,9 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
 
+  nameFromInput: '',
+  phoneFromInput: '',
+
   isShowingPhoneNumber: false,
 
   actions: {
@@ -9,9 +12,9 @@ export default Ember.Controller.extend({
       this.toggleProperty('isShowingPhoneNumber');
     },
 
-    submit() {
-      var nameFromInput = this.get('name');
-      var phoneFromInput = this.get('phone');
+    addNewContact() {
+      var nameFromInput = this.get('nameFromInput');
+      var phoneFromInput = this.get('phoneFromInput');
 
       var newContact = this.store.createRecord('contact', {
         name: nameFromInput,
@@ -20,9 +23,13 @@ export default Ember.Controller.extend({
 
       newContact.save();
 
-      this.set('name', '');
-      this.set('phone', '');
+      this.set('nameFromInput', '');
+      this.set('phoneFromInput', '');
 
+    },
+
+    deleteContact(item) {
+      item.destroyRecord();
     }
   }
 
