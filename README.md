@@ -1,4 +1,4 @@
-# Week 1 Ember Sessions
+# Week 3 Ember Sessions
 
 This project is where we got up to in [Szines's Ember Tutorial](https://github.com/szines/contacts-app-client) on Thursday 4th of June 2015
 
