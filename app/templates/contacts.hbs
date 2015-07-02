@@ -41,5 +41,5 @@
     {{input type="text" value=phoneFromInput size="20" placeholder="Phone" class="form-control"}}
   </div>
 
-  <button type="submit" class="btn btn-warning" {{action 'addNewContact'}}>Add New Contact</button>
+  <button type="submit" class="btn btn-warning {{if nothingThere 'disabled'}}" {{action 'addNewContact'}}>Add New Contact</button>
 </div>
