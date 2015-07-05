@@ -1,6 +1,25 @@
 <h1>Contacts</h1>
 
 <p>Size: {{model.length}}</p>
+<p>Contacts with email: {{contactsWithEmail}}</p>
+
+  <div class="row">
+    <div class="col-xs-3">
+      {{input type="text" value=nameFromInput size="100" placeholder="Enter a new name" class="form-control"}}
+    </div>
+
+    <div class="col-xs-3">
+      {{input type="text" value=phoneFromInput size="20" placeholder="Phone" class="form-control"}}
+    </div>
+
+    <div class="col-xs-3">
+      {{input type="text" value=emailFromInput size="20" placeholder="Email" class="form-control"}}
+    </div>
+
+    <button type="submit" class="btn btn-warning {{if nothingThere 'disabled'}}" {{action 'addNewContact'}}>Add New Contact</button>
+  </div>
+
+<br>
 
 <table class="table table-bordered table-hover">
 
@@ -13,6 +32,7 @@
           {{if isShowingPhoneNumber 'Hide' 'Show'}}
         </button>
       </th>
+      <th>Email</th>
       <th></th>
     </tr>
   </thead>
@@ -22,6 +42,7 @@
         <td>{{item.id}}</td>
         <td>{{item.name}}</td>
         <td>{{#if isShowingPhoneNumber}}{{item.phone}}{{/if}}</td>
+        <td>{{item.email}}</td>
         <td>
           <button class="btn btn-xs btn-danger" {{action "deleteContact" item}}>Delete</button>
         </td>
@@ -31,15 +52,3 @@
     {{/each}}
   </tbody>
 </table>
-
-<div class="row">
-  <div class="col-xs-3">
-    {{input type="text" value=nameFromInput size="100" placeholder="Enter a new name" class="form-control"}}
-  </div>
-
-  <div class="col-xs-3">
-    {{input type="text" value=phoneFromInput size="20" placeholder="Phone" class="form-control"}}
-  </div>
-
-  <button type="submit" class="btn btn-warning {{if nothingThere 'disabled'}}" {{action 'addNewContact'}}>Add New Contact</button>
-</div>
