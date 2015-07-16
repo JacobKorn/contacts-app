@@ -3,52 +3,10 @@
 <p>Size: {{model.length}}</p>
 <p>Contacts with email: {{contactsWithEmail}}</p>
 
-  <div class="row">
-    <div class="col-xs-3">
-      {{input type="text" value=nameFromInput size="100" placeholder="Enter a new name" class="form-control"}}
-    </div>
-
-    <div class="col-xs-3">
-      {{input type="text" value=phoneFromInput size="20" placeholder="Phone" class="form-control"}}
-    </div>
-
-    <div class="col-xs-3">
-      {{input type="text" value=emailFromInput size="20" placeholder="Email" class="form-control"}}
-    </div>
-
-    <button type="submit" class="btn btn-warning {{if nothingThere 'disabled'}}" {{action 'addNewContact'}}>Add New Contact</button>
-  </div>
+{{contacts/add-contact-form action='addNewContact'}}
 
 <br>
 
-<table class="table table-bordered table-hover">
+{{contacts/contact-table model=model}}
 
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>Name</th>
-      <th>Phone
-        <button {{action "toggleShowPhoneNumber"}} class="btn btn-xs {{if isShowingPhoneNumber 'btn-success' 'btn-danger'}}">
-          {{if isShowingPhoneNumber 'Hide' 'Show'}}
-        </button>
-      </th>
-      <th>Email</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    {{#each model key="id" as |item|}}
-      <tr>
-        <td>{{item.id}}</td>
-        <td>{{item.name}}</td>
-        <td>{{#if isShowingPhoneNumber}}{{item.phone}}{{/if}}</td>
-        <td>{{item.email}}</td>
-        <td>
-          <button class="btn btn-xs btn-danger" {{action "deleteContact" item}}>Delete</button>
-        </td>
-      </tr>
-    {{else}}
-      <tr><td colspan="4" class="text-center">Please add your first contact to the list</td></tr>
-    {{/each}}
-  </tbody>
-</table>
+{{confirmation-modal}}
